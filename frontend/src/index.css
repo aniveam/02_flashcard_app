@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --bg-color: #ffffff;
+  --text-color: #4e5867;
+}
+
+.app {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+.app.dark {
+  --bg-color: #171a1a;
+  --text-color: #ffffff;
+}
+
+* {
+  @apply transition-colors duration-200;
+}
