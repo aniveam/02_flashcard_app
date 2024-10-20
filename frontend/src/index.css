@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --bg-color: #ffffff;
+  --bg-color: #f3f7ff;
   --text-color: #4e5867;
 }
 
@@ -14,7 +14,7 @@
 
 .app.dark {
   --bg-color: #171a1a;
-  --text-color: #ffffff;
+  --text-color: #f3f7ff;
 }
 
 * {

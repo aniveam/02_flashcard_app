@@ -11,7 +11,8 @@ export default {
         heading: ['Lexend', 'sans-serif'],
       },
       colors: {
-        'theme-dark': '#171A1A', // Custom dark background color
+        'theme-dark': '#171A1A',
+        'theme-light': '#F3F7FF'
       },
     },
     fontFamily: {
