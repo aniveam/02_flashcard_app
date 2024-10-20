@@ -8,7 +8,7 @@ interface AuthenticatedRequest extends Request {
 const authenticateToken = async (
   req: AuthenticatedRequest,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) => {
   const token = req.header("Authorization")?.split(" ")[1];
   if (!token) {
@@ -24,4 +24,4 @@ const authenticateToken = async (
   }
 };
 
-export {authenticateToken, AuthenticatedRequest}
+export { authenticateToken, AuthenticatedRequest };

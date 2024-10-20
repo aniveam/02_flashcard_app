@@ -4,8 +4,6 @@ import { authenticateToken } from "../middleware/authMiddleware";
 
 const router = express.Router();
 
-router.get('/api/decks', authenticateToken, getDecks)
+router.get("/api/decks", authenticateToken, getDecks);
 
-
-
-export default router
+export default router;
