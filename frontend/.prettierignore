@@ -1,1 +1,4 @@
-./dist
+# Ignore everything
+/*
+# Except for src folder
+!src/
