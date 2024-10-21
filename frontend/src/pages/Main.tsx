@@ -1,9 +1,14 @@
 import { useTheme } from "@/context/ThemeContext";
+import FadeInSection from "@/layout/FadeInSection";
 import { Navbar } from "@/layout/Navbar";
 import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 
 export function Main() {
   const { theme } = useTheme();
+  const [isVisible, setIsVisible] = useState<boolean>(true);
+  const sectionRef = useRef<HTMLDivElement | null>(null);
+
   // Animations
   const slideVariants = {
     start: { y: 40, opacity: 0 },
@@ -13,6 +18,25 @@ export function Main() {
     start: { y: 40 },
     bounce: { y: [0, 5, 0] }
   };
+
+  const handleScroll = () => {
+    if (sectionRef.current) {
+      const { top, bottom } = sectionRef.current.getBoundingClientRect();
+      const viewPortHeight = window.innerHeight;
+      if (top < viewPortHeight && bottom >= 0) {
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
+      }
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
     <div
@@ -78,14 +102,92 @@ export function Main() {
           </motion.div>
         </div>
       </section>
-      <div
-        id="how-it-works"
-        style={{ height: `calc(100vh - 160px)` }}
-        className="h-dvh">
-        <section>
-          <motion.p>TEST</motion.p>
-        </section>
-      </div>
+      <section>
+        <div
+          id="how-it-works"
+          style={{ height: `calc(100vh - 160px)` }}
+          className="h-dvh flex flex-col items-center">
+          <FadeInSection>
+            <p className="text-6xl text-center text-black dark:text-white tracking-tighter">
+              How It Works
+            </p>
+            <p className="text-xl text-center text-gray-700 dark:text-gray-300 max-w-2xl mt-3 mb-10">
+              Empower your study routine in just a few steps
+            </p>
+          </FadeInSection>
+
+          <div ref={sectionRef} className="w-2/3 space-y-8">
+            <motion.div
+              variants={slideVariants}
+              initial="start"
+              animate={isVisible ? "end" : "start"}
+              transition={{ duration: 0.9 }}
+              className="text-gray-600 dark:text-white">
+              <p className="font-medium text-xl">1) Create Decks</p>
+              <p className="dark:text-slate-400">
+                Organize your learning by creating custom decks. Name them based
+                on subjects, topics, or anything you want to master.
+              </p>
+            </motion.div>
+            <motion.div
+              variants={slideVariants}
+              initial="start"
+              animate={isVisible ? "end" : "start"}
+              transition={{ duration: 0.9, delay: 0.2 }}
+              className="text-gray-600 dark:text-white">
+              <p className="font-medium text-xl">2) Add flashcards to Decks</p>
+              <p className="dark:text-slate-400">
+                Easily create flashcards with a question on one side and the
+                answer on the other. You can add as many cards as you need to
+                each deck
+              </p>
+            </motion.div>
+            <motion.div
+              variants={slideVariants}
+              initial="start"
+              animate={isVisible ? "end" : "start"}
+              transition={{ duration: 0.9, delay: 0.4 }}
+              className="text-gray-600 dark:text-white">
+              <p className="font-medium text-xl">3) Favorite Key Flashcards</p>
+              <p className="dark:text-slate-400">
+                Mark your most important flashcards as favorites for quick
+                access. Focus on what matters most to you
+              </p>
+            </motion.div>
+            <motion.div
+              variants={slideVariants}
+              initial="start"
+              animate={isVisible ? "end" : "start"}
+              transition={{ duration: 0.9, delay: 0.6 }}
+              className="text-gray-600 dark:text-white">
+              <p className="font-medium text-xl">4) Practice Your Way</p>
+              <p className="dark:text-slate-400">
+                <span className="font-medium">Practice All Cards:</span> Go
+                through the entire deck at once.
+              </p>
+              <p className="dark:text-slate-400">
+                <span className="font-medium">Practice Favorites Only:</span>{" "}
+                Focus on your starred cards when you need a quick review.
+              </p>
+            </motion.div>
+            <motion.div
+              variants={slideVariants}
+              initial="start"
+              animate={isVisible ? "end" : "start"}
+              transition={{ duration: 0.9, delay: 0.8 }}
+              className="text-gray-600 dark:text-white">
+              <p className="font-medium text-xl">
+                5) Leverage Spaced Repetition
+              </p>
+              <p className="dark:text-slate-400">
+                Strengthen your memory by using spaced repetition. Cards you
+                struggle with will reappear more frequently to help reinforce
+                learning.
+              </p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
