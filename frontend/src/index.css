@@ -7,9 +7,17 @@
   --text-color: #4e5867;
 }
 
+html, body {
+  height: 100%; /* Full height */
+  margin: 0;    /* Remove default margin */
+  overflow: hidden; /* Prevent body scrolling */
+}
+
 .app {
   background-color: var(--bg-color);
   color: var(--text-color);
+  min-height: 100vh; /* Ensure it covers full viewport height */
+  overflow-y: auto; /* Allow scrolling on .app only */
 }
 
 .app.dark {
