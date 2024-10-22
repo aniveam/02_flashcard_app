@@ -21,6 +21,9 @@ export function Navbar() {
   return (
     <nav className="relative top-0 sticky w-full z-50 bg-theme-light dark:bg-theme-dark">
       <div className="h-20 grid grid-cols-3 items-center content-center">
+        <div className="flex items-center hidden md:flex">
+          <img src="/img/logo.png" width={100}/>
+        </div>
         <div className="flex flex-row justify-center items-center space-x-10 col-span-2 md:col-start-2 md:col-span-1">
           <Link
             to="/"
@@ -45,6 +48,26 @@ export function Navbar() {
             </motion.p>
           </Link>
         </div>
+        
+        <div className="flex justify-end items-center space-x-5 p-4 md:flex hidden">
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.2 }}>
+            <Link
+              to="/login"
+              className="py-2 px-4 bg-slate-900 dark:bg-slate-700 text-white rounded-full">
+              Log In
+            </Link>
+          </motion.button>
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.2 }}
+            onClick={toggleTheme}
+            className="py-2 px-4 rounded-full bg-slate-300 dark:bg-slate-600 text-slate-600 dark:text-white">
+            <i className="fa-solid fa-circle-half-stroke"></i>
+          </motion.button>
+        </div>
+
         {/* Hamburger Menu */}
         <div className="flex flex-row space-x-5 place-self-end p-4 block md:hidden">
           {!isMenuOpen ? (
@@ -61,11 +84,12 @@ export function Navbar() {
                 <i className="fa-solid fa-x text-black dark:text-white"></i>
               </button>
               <div className="mt-4 flex flex-col justify-center items-center z-50 bg-slate-300 dark:bg-slate-600 absolute top-12 right-4 rounded shadow">
-                <button className="w-full dark:text-white text-black text-center hover:bg-gray-400 py-2 px-3 rounded">
-                  <Link className="w-full" to="/login">
-                    Log In
-                  </Link>
-                </button>
+                <Link
+                  className="w-full dark:text-white text-black text-center hover:bg-gray-400 py-2 px-3 rounded"
+                  to="/login">
+                  Log In
+                </Link>
+
                 <button
                   onClick={toggleTheme}
                   className="w-full dark:text-white text-black text-center hover:bg-gray-400 py-2 px-3 rounded">
@@ -74,21 +98,6 @@ export function Navbar() {
               </div>
             </>
           )}
-        </div>
-        <div className="flex flex-row space-x-5 place-self-end p-4 md:block hidden">
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            transition={{ duration: 0.2 }}
-            className="py-2 px-4 bg-slate-900 dark:bg-slate-700 text-white rounded-full">
-            <Link to="/login">Log In</Link>
-          </motion.button>
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            transition={{ duration: 0.2 }}
-            onClick={toggleTheme}
-            className="py-2 px-4 rounded-full bg-slate-300 dark:bg-slate-600 text-slate-600 dark:text-white">
-            <i className="fa-solid fa-circle-half-stroke"></i>
-          </motion.button>
         </div>
       </div>
       <div

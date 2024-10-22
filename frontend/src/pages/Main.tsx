@@ -43,7 +43,7 @@ export function Main() {
       id="main"
       className="flex flex-col justify-center items-center bg-theme-light dark:bg-theme-dark">
       <Navbar />
-      <section className="h-dvh mt-20">
+      <section className="h-dvh mt-10">
         <div className="flex flex-col items-center">
           <motion.p
             variants={slideVariants}
@@ -102,7 +102,7 @@ export function Main() {
           </motion.div>
         </div>
       </section>
-      <section className="min-h-[calc(100vh-160px)] flex flex-col justify-between mt-20 bg-theme-light dark:bg-theme-dark">
+      <section className="min-h-[calc(100vh-120px)] flex flex-col justify-between bg-theme-light dark:bg-theme-dark">
         <div id="how-it-works" className="flex flex-col items-center p-4">
           <FadeInSection>
             <p className="text-center text-4xl sm:text-5xl lg:text-6xl xl:text-7xl text-black dark:text-white">

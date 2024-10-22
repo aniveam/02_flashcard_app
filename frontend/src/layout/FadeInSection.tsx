@@ -25,7 +25,7 @@ const FadeInSection: React.FC<FadeInSectionProps> = ({
       ref={ref}
       initial={{ opacity: 0, x: initialX }}
       animate={{ opacity: isInView ? 1 : 0, x: isInView ? 0 : initialX }}
-      transition={{ duration: 1 }}>
+      transition={{ duration: 0.9 }}>
       {children}
     </motion.div>
   );
