@@ -52,7 +52,7 @@ export function Main() {
             transition={{ duration: 0.9 }}
             className="
               lg:w-2/3 tracking-tighter
-              text-center text-4xl sm:text-5xl lg:text-6xl xl:text-7xl text-black dark:text-white
+              text-center text-4xl sm:text-5xl lg:text-6xl xl:text-8xl text-black dark:text-white
             ">
             Master Concepts, One Flashcard at a Time
           </motion.p>
@@ -62,7 +62,7 @@ export function Main() {
             animate="end"
             transition={{ duration: 0.9, delay: 0.1 }}
             className="lg:w-1/2 p-3 mt-3 flex flex-col items-center gap-y-4">
-            <p className="text-xl text-gray-600 dark:text-slate-200 text-center">
+            <p className="tracking-wider text-xl text-gray-600 dark:text-slate-200 text-center">
               Experience effortless learning with a streamlined design—no
               clutter, just the essentials to help you master concepts quickly
             </p>
@@ -90,7 +90,7 @@ export function Main() {
                 />
               </div>
               <img
-                className="relative z-10 w-[250px] lg:w-[300px] xl:w-[390px]"
+                className="relative z-10 w-[250px] md:w-[400px] lg:w-[300px] xl:w-[390px]"
                 src={
                   theme === "light"
                     ? "/img/Macbook.png"
@@ -102,21 +102,18 @@ export function Main() {
           </motion.div>
         </div>
       </section>
-      <section>
-        <div
-          id="how-it-works"
-          style={{ height: `calc(100vh - 160px)` }}
-          className="h-dvh flex flex-col items-center">
+      <section className="min-h-[calc(100vh-160px)] flex flex-col justify-between mt-20 bg-theme-light dark:bg-theme-dark">
+        <div id="how-it-works" className="flex flex-col items-center p-4">
           <FadeInSection>
-            <p className="text-6xl text-center text-black dark:text-white tracking-tighter">
+            <p className="text-center text-4xl sm:text-5xl lg:text-6xl xl:text-7xl text-black dark:text-white">
               How It Works
             </p>
-            <p className="text-xl text-center text-gray-700 dark:text-gray-300 max-w-2xl mt-3 mb-10">
+            <p className="tracking-wider text-xl text-center text-gray-700 dark:text-gray-300 max-w-2xl mt-3 mb-10">
               Empower your study routine in just a few steps
             </p>
           </FadeInSection>
 
-          <div ref={sectionRef} className="w-2/3 space-y-8">
+          <div ref={sectionRef} className="md:w-2/3 space-y-8 p-4">
             <motion.div
               variants={slideVariants}
               initial="start"
@@ -139,7 +136,7 @@ export function Main() {
               <p className="dark:text-slate-400">
                 Easily create flashcards with a question on one side and the
                 answer on the other. You can add as many cards as you need to
-                each deck
+                each deck.
               </p>
             </motion.div>
             <motion.div
@@ -151,7 +148,7 @@ export function Main() {
               <p className="font-medium text-xl">3) Favorite Key Flashcards</p>
               <p className="dark:text-slate-400">
                 Mark your most important flashcards as favorites for quick
-                access. Focus on what matters most to you
+                access. Focus on what matters most to you.
               </p>
             </motion.div>
             <motion.div
