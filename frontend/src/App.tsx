@@ -1,15 +1,15 @@
-import { AuthContext } from "@/context/AuthContext";
+import { useAuth } from "@/context/AuthContext";
 import { useTheme } from "@/context/ThemeContext";
 import { Login } from "@/pages/Login";
 import { Main } from "@/pages/Main";
 import { Register } from "@/pages/Register";
-import { useContext, useEffect } from "react";
+import { useEffect } from "react";
 import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import { Dashboard } from "./pages/Flashcards/Dashboard";
 
 function App() {
   const { theme } = useTheme();
-  const { currentUser } = useContext(AuthContext);
+  const { currentUser, loading } = useAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -17,6 +17,14 @@ function App() {
       navigate("/dashboard");
     }
   }, []);
+
+  if (currentUser && loading) {
+    return (
+      <div className="h-screen flex justify-center items-center bg-theme-light dark:bg-theme-dark">
+        <i className="fa-solid fa-spinner text-slate-600 text-6xl animate-spin"></i>
+      </div>
+    );
+  }
 
   return (
     <div className={`app ${theme === "dark" ? "dark" : ""}`}>

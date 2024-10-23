@@ -3,13 +3,31 @@ import { useTheme } from "@/context/ThemeContext";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
-export function DashboardNavbar() {
+interface NavbarProps {
+  toggleMenu: () => void;
+  menuVisible: boolean;
+}
+
+export function Navbar({ toggleMenu, menuVisible }: NavbarProps) {
   const { toggleTheme } = useTheme();
   const { signOut } = useAuth();
 
   return (
-    <div className="h-20 flex justify-between relative top-0 sticky w-full z-50 bg-nav-light dark:bg-nav-dark">
-      <div className="flex items-center hidden md:flex">
+    <div className="h-20 flex justify-between relative top-0 sticky w-full z-50 bg-nav-light dark:bg-nav-dark px-3">
+      <div className="flex items-center">
+        {!menuVisible ? (
+          <button
+            onClick={toggleMenu}
+            className="w-10 h-8 sm:h-10 rounded-full bg-slate-400 dark:bg-slate-500">
+            <i className="fa-solid fa-bars text-black"></i>
+          </button>
+        ) : (
+          <button
+            onClick={toggleMenu}
+            className="w-10 h-8 sm:h-10 rounded-full bg-slate-400 dark:bg-slate-500">
+            <i className="fa-solid fa-x text-black text-sm"></i>
+          </button>
+        )}
         <Link to="/">
           <img src="/img/logo.png" width={200} />
         </Link>
@@ -18,7 +36,7 @@ export function DashboardNavbar() {
         <motion.button
           whileHover={{ scale: 1.05 }}
           transition={{ duration: 0.2 }}
-          className="py-2 px-4 bg-slate-900 dark:bg-slate-700 text-white rounded-full"
+          className="py-2 px-4 bg-slate-900 dark:bg-slate-700 text-sm text-white rounded-full"
           onClick={signOut}>
           Log Out
         </motion.button>

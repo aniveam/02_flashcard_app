@@ -73,15 +73,15 @@ export function Navbar() {
           {!isMenuOpen ? (
             <button
               onClick={() => handleMenu()}
-              className="py-2 px-4 rounded-full bg-slate-900 dark:bg-slate-800 text-white">
+              className="w-10 h-10 rounded-full bg-slate-900 dark:bg-slate-800">
               <i className="fa-solid fa-bars text-white"></i>
             </button>
           ) : (
             <>
               <button
                 onClick={() => handleMenu()}
-                className="py-2 px-4 rounded-full bg-slate-300 dark:bg-slate-600">
-                <i className="fa-solid fa-x text-black dark:text-white"></i>
+                className="w-10 h-10 rounded-full bg-slate-300 dark:bg-slate-600">
+                <i className="fa-solid fa-x text-black dark:text-white text-sm"></i>
               </button>
               <div className="mt-4 flex flex-col justify-center items-center z-50 bg-slate-300 dark:bg-slate-600 absolute top-12 right-4 rounded shadow">
                 <Link

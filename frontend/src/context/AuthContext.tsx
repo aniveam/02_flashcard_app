@@ -15,18 +15,21 @@ interface Props {
 
 export const AuthContext = createContext({
   currentUser: {} as User | null,
+  loading: true,
   setCurrentUser: (_user: User) => {},
   signOut: () => {}
 });
 
 const AuthProvider = ({ children }: Props): React.ReactElement => {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
   const navigate = useNavigate();
 
   useEffect(() => {
     const unsubscribe = userStateListener(user => {
       if (user) {
         setCurrentUser(user);
+        setLoading(false);
       }
     });
     return unsubscribe;
@@ -43,7 +46,8 @@ const AuthProvider = ({ children }: Props): React.ReactElement => {
   const value = {
     currentUser,
     setCurrentUser,
-    signOut
+    signOut,
+    loading
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
