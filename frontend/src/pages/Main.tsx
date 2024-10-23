@@ -106,7 +106,6 @@ export function Main() {
           </motion.div>
         </div>
       </section>
-      
       {/* How It Works */}
       <section className="min-h-[calc(100vh-120px)] flex flex-col justify-between bg-theme-light dark:bg-theme-dark">
         <div id="how-it-works" className="flex flex-col items-center p-4">

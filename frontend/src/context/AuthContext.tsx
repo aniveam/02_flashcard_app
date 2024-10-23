@@ -1,6 +1,12 @@
 import { SignOutUser, userStateListener } from "@/config/firebase";
 import { User } from "firebase/auth";
-import React, { createContext, ReactNode, useEffect, useState } from "react";
+import React, {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState
+} from "react";
 import { useNavigate } from "react-router-dom";
 
 interface Props {
@@ -13,7 +19,7 @@ export const AuthContext = createContext({
   signOut: () => {}
 });
 
-export const AuthProvider = ({ children }: Props): React.ReactElement => {
+const AuthProvider = ({ children }: Props): React.ReactElement => {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
   const navigate = useNavigate();
 
@@ -31,7 +37,7 @@ export const AuthProvider = ({ children }: Props): React.ReactElement => {
   const signOut = (): void => {
     SignOutUser();
     setCurrentUser(null);
-    navigate("/");
+    navigate("/login");
   };
 
   const value = {
@@ -42,3 +48,13 @@ export const AuthProvider = ({ children }: Props): React.ReactElement => {
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
+
+const useAuth = () => {
+  const context = useContext(AuthContext);
+  if (!context) {
+    throw new Error("useTheme must be used within a context provider");
+  }
+  return context;
+};
+
+export { AuthProvider, useAuth };

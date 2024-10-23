@@ -12,7 +12,9 @@ export default {
       },
       colors: {
         'theme-dark': '#171A1A',
-        'theme-light': '#F3F7FF'
+        'theme-light': '#F3F7FF',
+        'nav-light': '#D8F0FA',
+        'nav-dark': '#0C2D48'
       },
     },
     fontFamily: {

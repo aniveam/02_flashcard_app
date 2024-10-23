@@ -14,11 +14,16 @@ const defaultFormFields = {
 
 export function Form({ formType }: FormProps) {
   const [formFields, setFormFields] = useState(defaultFormFields);
+  const [passwordVisible, setPasswordVisible] = useState<boolean>(false);
   const { email, password } = formFields;
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormFields({ ...formFields, [name]: value });
+  };
+
+  const togglePasswordVisibility = () => {
+    setPasswordVisible(!passwordVisible);
   };
 
   const handleForm = async (e: FormEvent<HTMLFormElement>) => {
@@ -63,7 +68,7 @@ export function Form({ formType }: FormProps) {
           required
         />
       </div>
-      <div>
+      <div className="relative">
         <label
           htmlFor="password"
           className="block mb-2 text-md tracking-wide font-medium text-slate-600 dark:text-slate-200">
@@ -71,19 +76,28 @@ export function Form({ formType }: FormProps) {
         </label>
         <input
           className=" 
-          text-slate-600 dark:text-slate-200
-          block w-full p-2.5 rounded-lg text-sm
-          border hover:border-slate-400
-          focus:outline-none
-          dark:bg-slate-600 dark:border-slate-600 dark:hover:border-slate-400
-        "
-          type="password"
+            text-slate-600 dark:text-slate-200
+            block w-full p-2.5 rounded-lg text-sm
+            border hover:border-slate-400
+            focus:outline-none
+            dark:bg-slate-600 dark:border-slate-600 dark:hover:border-slate-400
+          "
+          type={!passwordVisible ? "password" : "text"}
           name="password"
           value={password}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleChange(e)}
           placeholder="Password"
           required
         />
+        <div
+          className="absolute -inset-y-3 right-0 top-5 pr-3 flex items-center cursor-pointer"
+          onClick={togglePasswordVisibility}>
+          {passwordVisible ? (
+            <i className="fa-regular fa-eye"></i>
+          ) : (
+            <i className="fa-regular fa-eye-slash"></i>
+          )}
+        </div>
       </div>
       {/* Form Buttons depending on type */}
       <form onSubmit={handleForm}>
@@ -100,15 +114,17 @@ export function Form({ formType }: FormProps) {
             {formType === "login" ? "Log In" : "Register"}
           </button>
           {formType === "login" && (
-            <button
+            <div
+              onClick={SignUserInGoogle}
               className="
-                  w-72 rounded-full xs:w-48 bg-blue-700 hover:bg-blue-600
-                  text-sm text-white dark:text-slate-200 font-medium tracking-wide 
-                  px-5 py-2.5
-                "
-              onClick={SignUserInGoogle}>
-              Log In w/ Google
-            </button>
+                flex flex-row items-center space-x-10
+                w-72 rounded-full xs:w-48 bg-blue-700 hover:bg-blue-600
+                text-sm text-white dark:text-slate-200 font-medium tracking-wide
+                px-5 py-2.5 cursor-pointer
+              ">
+              <img src="/img/google-icon.png" width={20} alt="Google Icon" />
+              <span>Log In w/ Google</span>
+            </div>
           )}
           <Link
             to={formType === "login" ? "/register" : "/login"}

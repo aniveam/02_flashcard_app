@@ -5,7 +5,7 @@ import { Main } from "@/pages/Main";
 import { Register } from "@/pages/Register";
 import { useContext, useEffect } from "react";
 import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
-import { Dashboard } from "./pages/Dashboard";
+import { Dashboard } from "./pages/Flashcards/Dashboard";
 
 function App() {
   const { theme } = useTheme();
@@ -31,7 +31,9 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route
           path="/dashboard/:deckId?"
-          element={currentUser ? <Dashboard /> : <Login />}
+          element={
+            currentUser ? <Dashboard /> : <Navigate replace to="/login" />
+          }
         />
       </Routes>
     </div>
