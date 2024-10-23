@@ -91,29 +91,29 @@ export function Form({ formType }: FormProps) {
           <button
             type="submit"
             className="
-              w-1/3 rounded-full text-sm xs:w-48 px-5 py-2.5 bg-[#CADDFF] hover:bg-[#F3D7F4] dark:bg-slate-700 dark:hover:bg-slate-500
+              w-72 rounded-full text-sm xs:w-48 px-5 py-2.5 bg-[#CADDFF] hover:bg-[#F3D7F4] dark:bg-slate-700 dark:hover:bg-slate-500
               text-slate-600 dark:text-slate-200 font-medium tracking-wide
               bg-transparent hover:bg-slate-200 dark:hover:bg-gray-600/50 
               border border-slate-300 dark:border-slate-600 
               transition-colors duration-300
             ">
-            {formType === "login" ? "Login" : "Register"}
+            {formType === "login" ? "Log In" : "Register"}
           </button>
           {formType === "login" && (
             <button
               className="
-                  w-1/3 rounded-full xs:w-48 bg-blue-700 hover:bg-blue-600
+                  w-72 rounded-full xs:w-48 bg-blue-700 hover:bg-blue-600
                   text-sm text-white dark:text-slate-200 font-medium tracking-wide 
                   px-5 py-2.5
                 "
               onClick={SignUserInGoogle}>
-              Login w/ Google
+              Log In w/ Google
             </button>
           )}
           <Link
             to={formType === "login" ? "/register" : "/login"}
             className="
-              w-1/3 m-3 rounded-full text-sm xs:w-48 px-5 py-2.5
+              w-72 m-3 rounded-full text-sm xs:w-48 px-5 py-2.5
               text-center text-slate-600 dark:text-slate-200 font-medium tracking-wide
               bg-transparent hover:bg-slate-200 dark:hover:bg-gray-600/50 
               border border-slate-300 dark:border-slate-600 

@@ -3,6 +3,7 @@ import FadeInSection from "@/layout/FadeInSection";
 import { Navbar } from "@/layout/Navbar";
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 
 export function Main() {
   const { theme } = useTheme();
@@ -67,10 +68,13 @@ export function Main() {
               clutter, just the essentials to help you master concepts quickly
             </p>
             <motion.button
-              className="text-lg rounded-full bg-blue-600 text-white py-2 px-4"
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.2 }}>
-              Try it now <i className="fa-regular fa-hand-pointer"></i>
+              <Link
+                to="/login"
+                className="text-lg rounded-full bg-blue-600 text-white py-2 px-4">
+                Try it now <i className="fa-regular fa-hand-pointer"></i>
+              </Link>
             </motion.button>
 
             <motion.div

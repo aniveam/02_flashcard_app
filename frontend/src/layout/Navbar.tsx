@@ -22,7 +22,7 @@ export function Navbar() {
     <nav className="relative top-0 sticky w-full z-50 bg-theme-light dark:bg-theme-dark">
       <div className="h-20 grid grid-cols-3 items-center content-center">
         <div className="flex items-center hidden md:flex">
-          <img src="/img/logo.png" width={100} />
+          <img src="/img/logo.png" width={200} />
         </div>
         <div className="flex flex-row justify-center items-center space-x-10 col-span-2 md:col-start-2 md:col-span-1">
           <Link
