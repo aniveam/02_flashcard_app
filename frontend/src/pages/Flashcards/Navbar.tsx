@@ -15,19 +15,12 @@ export function Navbar({ toggleMenu, menuVisible }: NavbarProps) {
   return (
     <div className="h-20 flex justify-between relative top-0 sticky w-full z-50 bg-nav-light dark:bg-nav-dark px-3">
       <div className="flex items-center">
-        {!menuVisible ? (
-          <button
-            onClick={toggleMenu}
-            className="w-10 h-8 sm:h-10 rounded-full bg-slate-400 dark:bg-slate-500">
-            <i className="fa-solid fa-bars text-black"></i>
-          </button>
-        ) : (
-          <button
-            onClick={toggleMenu}
-            className="w-10 h-8 sm:h-10 rounded-full bg-slate-400 dark:bg-slate-500">
-            <i className="fa-solid fa-x text-black text-sm"></i>
-          </button>
-        )}
+        <button
+          onClick={toggleMenu}
+          className="w-10 h-10 rounded-full bg-slate-400 dark:bg-slate-500 flex items-center justify-center">
+          <i
+            className={`fa-solid ${menuVisible ? "fa-x" : "fa-bars"} text-black`}></i>
+        </button>
         <Link to="/">
           <img src="/img/logo.png" width={200} />
         </Link>

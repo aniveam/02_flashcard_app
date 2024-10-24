@@ -13,18 +13,11 @@ function App() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (currentUser) {
+    // If the user is logged in and not loading, navigate to dashboard
+    if (currentUser && !loading) {
       navigate("/dashboard");
     }
-  }, []);
-
-  if (currentUser && loading) {
-    return (
-      <div className="h-screen flex justify-center items-center bg-theme-light dark:bg-theme-dark">
-        <i className="fa-solid fa-spinner text-slate-600 text-6xl animate-spin"></i>
-      </div>
-    );
-  }
+  }, [currentUser, loading]);
 
   return (
     <div className={`app ${theme === "dark" ? "dark" : ""}`}>
@@ -40,7 +33,16 @@ function App() {
         <Route
           path="/dashboard/:deckId?"
           element={
-            currentUser ? <Dashboard /> : <Navigate replace to="/login" />
+            // If loading, show spinner; if user is logged in, show Dashboard; otherwise redirect to login
+            loading ? (
+              <div className="h-screen flex justify-center items-center bg-theme-light dark:bg-theme-dark">
+                <i className="fa-solid fa-spinner text-slate-600 text-6xl animate-spin"></i>
+              </div>
+            ) : currentUser ? (
+              <Dashboard />
+            ) : (
+              <Navigate replace to="/login" />
+            )
           }
         />
       </Routes>
